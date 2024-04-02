@@ -1,6 +1,6 @@
 # Personal Portfolio 🔥
 
-# Docker Build and Push Workflow for Nginx Website
+# Docker Build and Push Workflow for Personal Portfolio running on Nginx
 
 This repository contains a GitHub Actions workflow for building and pushing a Docker image of an Nginx-based website to Docker Hub.
 
