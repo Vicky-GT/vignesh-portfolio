@@ -29,7 +29,14 @@ jobs:
         trivy --version
 
     - name: Run Security Checks with Trivy
-      run: trivy --exit-code 1 vicky-gt/vignesh_portfolio
+      run: |
+        trivy vicky-gt/vignesh_portfolio
+        exit_code=$?
+        if [ $exit_code -ne 0 ]; then
+          echo "Trivy found vulnerabilities. Exiting with code $exit_code."
+          exit $exit_code
+        fi
+
 
     - name: Push Docker Image
       run: |
