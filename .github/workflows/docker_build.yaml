@@ -23,10 +23,13 @@ jobs:
     - name: Build Docker Image
       run:  docker build -t vicky-gt/vignesh_portfolio .
 
-    - name: Run Security Checks with Trivy
+    - name: Install Trivy
       run: |
-        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin
-        trivy --no-progress vicky-gt/vignesh_portfolio
+        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+        trivy --version
+
+    - name: Run Security Checks with Trivy
+      run: trivy --exit-code 1 vicky-gt/vignesh_portfolio
 
     - name: Push Docker Image
       run: |
